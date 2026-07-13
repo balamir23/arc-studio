@@ -1,0 +1,15 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.30;
+
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+
+contract ArcToken is ERC20 {
+    constructor(
+        string memory name_,
+        string memory symbol_,
+        uint256 supply_,
+        address owner_
+    ) ERC20(name_, symbol_) {
+        _mint(owner_, supply_ * 10 ** decimals());
+    }
+}
