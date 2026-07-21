@@ -3,7 +3,7 @@ pragma solidity ^0.8.30;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-contract ArcToken is ERC20 {
+contract ForgeToken is ERC20 {
     constructor(
         string memory name_,
         string memory symbol_,
