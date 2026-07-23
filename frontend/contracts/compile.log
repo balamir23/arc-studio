@@ -1,0 +1,42 @@
+◇ injected env (2) from .env // tip: ⌘ enable debugging { debug: true }
+TypeError: The "mcopy" instruction is only available for Cancun-compatible VMs (you are currently compiling for "paris").
+  --> @openzeppelin/contracts/utils/Bytes.sol:94:13:
+   |
+94 |             mcopy(add(result, 0x20), add(add(buffer, 0x20), start), sub(end, start))
+   |             ^^^^^
+
+
+TypeError: The "mcopy" instruction is only available for Cancun-compatible VMs (you are currently compiling for "paris").
+   --> @openzeppelin/contracts/utils/Bytes.sol:124:13:
+    |
+124 |             mcopy(add(buffer, 0x20), add(add(buffer, 0x20), start), sub(end, start))
+    |             ^^^^^
+
+
+TypeError: The "mcopy" instruction is only available for Cancun-compatible VMs (you are currently compiling for "paris").
+   --> @openzeppelin/contracts/utils/Bytes.sol:168:13:
+    |
+168 |             mcopy(add(add(buffer, 0x20), pos), add(add(replacement, 0x20), offset), length)
+    |             ^^^^^
+
+
+TypeError: The "mcopy" instruction is only available for Cancun-compatible VMs (you are currently compiling for "paris").
+   --> @openzeppelin/contracts/utils/Bytes.sol:195:17:
+    |
+195 |                 mcopy(add(result, offset), add(input, 0x20), mload(input))
+    |                 ^^^^^
+
+
+Error HH600: Compilation failed
+
+HardhatError: HH600: Compilation failed
+    at SimpleTaskDefinition.action (/workspaces/chainforge/frontend/contracts/node_modules/hardhat/src/builtin-tasks/compile.ts:504:15)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at Environment._runTaskDefinition (/workspaces/chainforge/frontend/contracts/node_modules/hardhat/src/internal/core/runtime-environment.ts:351:14)
+    at OverriddenTaskDefinition._action (/workspaces/chainforge/frontend/contracts/node_modules/@typechain/hardhat/src/index.ts:28:30)
+    at Environment._runTaskDefinition (/workspaces/chainforge/frontend/contracts/node_modules/hardhat/src/internal/core/runtime-environment.ts:351:14)
+    at Environment.run (/workspaces/chainforge/frontend/contracts/node_modules/hardhat/src/internal/core/runtime-environment.ts:184:14)
+    at SimpleTaskDefinition.action (/workspaces/chainforge/frontend/contracts/node_modules/hardhat/src/builtin-tasks/compile.ts:1433:63)
+    at Environment._runTaskDefinition (/workspaces/chainforge/frontend/contracts/node_modules/hardhat/src/internal/core/runtime-environment.ts:351:14)
+    at Environment.run (/workspaces/chainforge/frontend/contracts/node_modules/hardhat/src/internal/core/runtime-environment.ts:184:14)
+    at SimpleTaskDefinition.action (/workspaces/chainforge/frontend/contracts/node_modules/hardhat/src/builtin-tasks/compile.ts:1513:7)
