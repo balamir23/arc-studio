@@ -8,6 +8,9 @@ import { TOKEN_FACTORY_ADDRESS } from "@/lib/contracts";
 import { tokenFactoryAbi } from "@/lib/abi/TokenFactory";
 import { erc20Abi } from "@/lib/abi/ERC20";
 
+function shortenAddress(address: string) {
+  return `${address.slice(0, 8)}...${address.slice(-6)}`;
+}
 export default function MyTokens() {
   const { address, isConnected } = useAccount();
   const [isOpen, setIsOpen] = useState(false);
@@ -56,16 +59,16 @@ export default function MyTokens() {
   if (!isConnected) return null;
 
   return (
-    <div className="rounded-xl border border-zinc-800 bg-zinc-950 p-6">
+    <div className="rounded-2xl border border-zinc-800 bg-zinc-900/70 backdrop-blur-xl p-8 shadow-xl text-white">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex w-full items-center justify-between text-left"
       >
-        <h2 className="text-xl font-semibold">
+        <h2 className="text-2xl font-bold text-white">
           {isOpen ? "▼" : "▶"} My Tokens ({tokenAddresses?.length ?? 0})
         </h2>
 
-        <span className="text-sm text-zinc-500">
+        <span className="rounded-full bg-zinc-800 px-3 py-1 text-xs font-semibold text-zinc-300">
           {isOpen ? "Hide" : "Show"}
         </span>
       </button>
@@ -73,7 +76,7 @@ export default function MyTokens() {
       {isOpen && (
         <div className="mt-6">
           {!tokenAddresses?.length ? (
-            <p className="text-zinc-400">
+            <p className="mt-1 text-cyan-400 font-medium">
               You haven't created any tokens yet.
             </p>
           ) : (
@@ -89,16 +92,16 @@ export default function MyTokens() {
                 return (
                   <div
                     key={token}
-                    className="rounded-xl border border-zinc-800 bg-zinc-900 p-5"
+                    className="rounded-2xl border border-zinc-800 bg-black/30 p-6 transition duration-300 hover:-translate-y-1 hover:border-cyan-500 hover:shadow-xl"
                   >
                     <div className="flex items-center justify-between">
                       <div>
-                        <h3 className="text-lg font-bold">
-                          {name ?? "Loading..."}
+                        <h3 className="text-xl font-bold text-white">
+                          {name ?? "Loading token..."}
                         </h3>
 
-                        <p className="text-zinc-400">
-                          {symbol ?? "..."}
+                        <p className="mt-1 font-medium text-cyan-400">
+                          {symbol ?? "Loading..."}
                         </p>
                       </div>
 
@@ -106,7 +109,7 @@ export default function MyTokens() {
                         href={`https://testnet.arcscan.app/address/${token}`}
                         target="_blank"
                         rel="noreferrer"
-                        className="rounded-lg bg-blue-600 px-4 py-2 text-sm transition-colors hover:bg-blue-700"
+                        className="rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 px-5 py-2 text-sm font-semibold text-white transition hover:scale-105"
                       >
                         ArcScan
                       </a>
@@ -114,21 +117,21 @@ export default function MyTokens() {
 
                     <div className="mt-5 space-y-2 text-sm">
                       <div>
-                        <span className="text-zinc-500">
+                        <span className="text-xs uppercase tracking-widest text-zinc-500">
                           Address
                         </span>
 
-                        <p className="break-all">
-                          {token}
+                        <p className="mt-2 font-mono text-sm tracking-wide text-zinc-200">
+                          {shortenAddress(token)}
                         </p>
                       </div>
 
                       <div>
-                        <span className="text-zinc-500">
+                        <span className="text-xs uppercase tracking-widest text-zinc-500">
                           Total Supply
                         </span>
 
-                        <p>
+                        <p className="mt-2 text-lg font-bold text-emerald-400">
                           {supply !== undefined &&
                           decimals !== undefined
                             ? Number(
